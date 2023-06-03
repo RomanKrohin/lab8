@@ -137,6 +137,7 @@ class LoginScreen : View() {
                 }
             }
         }
+        onRefresh()
     }
 
 }

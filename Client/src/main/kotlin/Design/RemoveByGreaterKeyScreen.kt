@@ -11,7 +11,7 @@ class RemoveByGreaterKeyScreen : View() {
     override val root= form{
         fieldset {
             alignment = Pos.TOP_CENTER
-            field(MyApp.bundle.getString("Enter name")) {
+            field(MyApp.bundle.getString("Enter_name")) {
                 textfield(input).useMaxWidth
                 style {
                     setMaxWidth(280.0)
