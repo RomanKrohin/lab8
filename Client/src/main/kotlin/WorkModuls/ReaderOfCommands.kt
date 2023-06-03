@@ -18,10 +18,8 @@ class ReaderOfCommands {
 
     val listOfCommands =
         mutableListOf("show", "info", "help", "history", "save", "clear", "exit", "auto-authentication", "registration")
-    val asker = Asker()
     val client = Client()
     val tokens = CommandComponentsManager()
-    val readerOfScripts = ReaderOfScripts()
 
     /**
      * Класс для чтения, выборки и вывода результатов команд

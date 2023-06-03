@@ -26,67 +26,67 @@ class InsertScreen : View() {
     override val root = form {
         setPrefSize(1000.0, 450.0)
         fieldset {
-            field("Name") {
+            field(MyApp.bundle.getString("Name")) {
                 textfield(inputName).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Coordinate X") {
+            field(MyApp.bundle.getString("Coordinate_X")) {
                 textfield(inputCX).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Coordinate Y") {
+            field(MyApp.bundle.getString("Coordinate_Y")) {
                 textfield(inputCY).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Students count") {
+            field(MyApp.bundle.getString("Students_count")) {
                 textfield(inputSC).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Should be expelled") {
+            field(MyApp.bundle.getString("Should_be_expelled")) {
                 textfield(inputSBE).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Average mark") {
+            field(MyApp.bundle.getString("Average_mark")) {
                 textfield(inputAM).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Form of education: \n[DISTANCE_EDUCATION,\nFULL_TIME_EDUCATION,\nEVENING_CLASSES] or null") {
+            field("${MyApp.bundle.getString("Form_of_education")}: \n[DISTANCE_EDUCATION,\nFULL_TIME_EDUCATION,\nEVENING_CLASSES] or null") {
                 textfield(inputFOE).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Admin name") {
+            field(MyApp.bundle.getString("Admin_name")) {
                 textfield(inputAName).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Admin weight") {
+            field(MyApp.bundle.getString("Admin_weight")) {
                 textfield(inputAdminW).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Admin color: ${StudyGroupInformation.Color.values().map { it.toString() }}") {
+            field("${MyApp.bundle.getString("Admin_color")}: ${StudyGroupInformation.Color.values().map { it.toString() }}") {
                 textfield(inputAdminColor).useMaxWidth
                 style {
                     fontFamily = "Small capital"
                 }
             }
-            field("Admin nation: ${Country.values().map { it.toString() }}") {
+            field("${MyApp.bundle.getString("Admin_country")}: ${Country.values().map { it.toString() }}") {
                 textfield(inputAdminCountry).useMaxWidth
                 style {
                     fontFamily = "Small capital"
@@ -121,6 +121,7 @@ class InsertScreen : View() {
                                 Country.valueOf(inputAdminCountry.value)
                             )
                         )
+                        studyGroup.setOwner(MyApp.data.getLogin())
                         if (CheckModule().check(studyGroup)) {
                             MyApp.readerOfCommands.readCommand(
                                 Task(

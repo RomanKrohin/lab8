@@ -1,6 +1,6 @@
 package Client
 
-data class Data(private var login: String, private var lang: String) {
+data class Data(private var login: String="", private var lang: String="ENG") {
     fun getLogin(): String {
         return login
     }

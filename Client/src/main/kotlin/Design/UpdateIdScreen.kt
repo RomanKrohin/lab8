@@ -12,14 +12,14 @@ class UpdateIdScreen : View() {
     override val root= form{
         fieldset {
             alignment = Pos.TOP_CENTER
-            field("Enter old ID") {
+            field(MyApp.bundle.getString("Enter_old_ID")) {
                 textfield(inputOldID).useMaxWidth
                 style {
                     setMaxWidth(280.0)
                     fontFamily = "Small capital"
                 }
             }
-            field("Enter new ID") {
+            field(MyApp.bundle.getString("Enter_new_ID")) {
                 textfield(inputNewID).useMaxWidth
                 style {
                     setMaxWidth(280.0)
@@ -28,7 +28,7 @@ class UpdateIdScreen : View() {
             }
         }
         hbox(50, Pos.BOTTOM_RIGHT){
-            button("Execute") {
+            button(MyApp.bundle.getString("Execute")) {
                 style {
                     setAlignment(Pos.TOP_CENTER)
                     textFill = Color.WHITE

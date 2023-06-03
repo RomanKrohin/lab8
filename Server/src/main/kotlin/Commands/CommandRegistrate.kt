@@ -33,7 +33,7 @@ class CommandRegistrate(workDatabaseHandler: DatabaseHandler, workConnection: Co
                 databaseHandler.registrateUser(components[0], components[1])
             }
             else{
-                answer.result="This account already exists"
+                answer.result="This_account_already_exists"
             }
             answer
         } catch (e: RuntimeException) {

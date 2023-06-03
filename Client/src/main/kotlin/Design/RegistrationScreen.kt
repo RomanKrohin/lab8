@@ -16,7 +16,7 @@ class RegistrationScreen() : View() {
     override val root = form {
         setPrefSize(400.0, 300.0)
         primaryStage.isResizable = false
-        text("Registration") {
+        text(MyApp.bundle.getString("Registration")) {
             style {
                 textFill = Color.BLUE
                 setAlignment(Pos.TOP_CENTER)
@@ -26,14 +26,14 @@ class RegistrationScreen() : View() {
         }
         fieldset {
             alignment = Pos.TOP_CENTER
-            field("Put your username") {
+            field(MyApp.bundle.getString("PutYourUsername")) {
                 textfield(inputUsername).useMaxWidth
                 style {
                     setMaxWidth(280.0)
                     fontFamily = "Small capital"
                 }
             }
-            field("Put your password") {
+            field(MyApp.bundle.getString("PutYourPassword")) {
                 textfield(inputPassword).useMaxWidth
                 style {
                     setMaxWidth(280.0)
@@ -44,16 +44,15 @@ class RegistrationScreen() : View() {
         hbox(50, Pos.TOP_CENTER) {
             style {
             }
-            button("Registrate") {
+            button(MyApp.bundle.getString("reg")) {
                 action {
                     if (inputPassword.value.matches(Regex("[a-zA-Z0-9]{10,}")) && inputUsername.value.matches(Regex("[a-zA-Z0-9]{10,}"))){
                         val answer =
                             readerOfCommands.readCommand("registration ${inputUsername.value} ${inputPassword.value}").result
-                        println(answer)
                         if (answer.split(" ").contains("+++")) {
                             replaceWith<TableScreen>(sizeToScene = true)
                         } else {
-                            answerText.set(answer)
+                            answerText.set(MyApp.bundle.getString(answer))
                         }
                         inputUsername.value = ""
                         inputPassword.value = ""
@@ -64,7 +63,7 @@ class RegistrationScreen() : View() {
                                 setAlignment(Pos.TOP_CENTER)
                                 padding = box(30.px, 20.px)
                             }
-                            answerText.set("Wrong password or login")
+                            answerText.set(MyApp.bundle.getString("Wrong_password_or_login"))
                         }
                     }
                 }

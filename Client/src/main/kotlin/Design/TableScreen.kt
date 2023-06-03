@@ -1,21 +1,16 @@
 package Design
 
 import LoginScreen
-import StudyGroupInformation.Coordinates
 import StudyGroupInformation.StudyGroup
-import javafx.beans.property.SimpleListProperty
+import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import javafx.geometry.Pos
-import javafx.scene.Parent
 import javafx.scene.paint.Color
 import tornadofx.*
-import tornadofx.Stylesheet.Companion.cell
-import tornadofx.Stylesheet.Companion.fitToHeight
-import tornadofx.Stylesheet.Companion.fitToWidth
-import javax.swing.text.StyleConstants.setAlignment
 
 class TableScreen() : View() {
     private val tableData: ObservableList<StudyGroup> = mutableListOf<StudyGroup>().asObservable()
+    private val login = SimpleStringProperty()
 
     override val root = borderpane() {
         primaryStage.isResizable = false
@@ -30,31 +25,31 @@ class TableScreen() : View() {
                     style {
                     }
                     isEditable = false
-                    column("ID", StudyGroup::getId)
-                    column("Name", StudyGroup::getName)
+                    column(MyApp.bundle.getString("ID"), StudyGroup::getId)
+                    column(MyApp.bundle.getString("Name"), StudyGroup::getName)
                     column("X", StudyGroup::getCoordinates).cellFormat {
                         text = it.getX().toString()
                     }
                     column("Y", StudyGroup::getCoordinates).cellFormat {
                         text = it.getY().toString()
                     }
-                    column("Student_count", StudyGroup::getStudentcount)
-                    column("Should_be_expelled", StudyGroup::getShouldBeExpelled)
-                    column("Average_mark", StudyGroup::getAverageMark)
-                    column("Form_of_education", StudyGroup::getFormOfEducation)
-                    column("Admin_name", StudyGroup::getAdmin).cellFormat {
+                    column(MyApp.bundle.getString("Student_count"), StudyGroup::getStudentcount)
+                    column(MyApp.bundle.getString("Should_be_expelled"), StudyGroup::getShouldBeExpelled)
+                    column(MyApp.bundle.getString("Average_mark"), StudyGroup::getAverageMark)
+                    column(MyApp.bundle.getString("Form_of_education"), StudyGroup::getFormOfEducation)
+                    column(MyApp.bundle.getString("Admin_name"), StudyGroup::getAdmin).cellFormat {
                         text = it.getName()
                     }
-                    column("Admin_weight", StudyGroup::getAdmin).cellFormat {
+                    column(MyApp.bundle.getString("Admin_weight"), StudyGroup::getAdmin).cellFormat {
                         text = it.getWeight().toString()
                     }
-                    column("Admin_color", StudyGroup::getAdmin).cellFormat {
+                    column(MyApp.bundle.getString("Admin_color"), StudyGroup::getAdmin).cellFormat {
                         text = it.getColor().toString()
                     }
-                    column("Admin_country", StudyGroup::getAdmin).cellFormat {
+                    column(MyApp.bundle.getString("Admin_country"), StudyGroup::getAdmin).cellFormat {
                         text = it.getCountry().toString()
                     }
-                    column("Owner", StudyGroup::getOwner)
+                    column(MyApp.bundle.getString("Owner"), StudyGroup::getOwner)
                 }
 
             }
@@ -63,11 +58,19 @@ class TableScreen() : View() {
         left {
             maxWidth = 240.0
             vbox {
+                login.set(MyApp.login)
+                label(login).style {
+                    setAlignment(Pos.TOP_CENTER)
+                    fontFamily = "Small capital"
+                    fontSize = 20.px
+                    padding = box(10.px, 20.px)
+                }
                 style {
                     setAlignment(Pos.TOP_LEFT)
                     padding = box(30.px, 20.px)
+                    setAlignment(Pos.TOP_CENTER)
                 }
-                button("Show") {
+                button(MyApp.bundle.getString("Show")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -81,7 +84,7 @@ class TableScreen() : View() {
                     }
                 }
                 spacing = 10.0
-                button("Info") {
+                button(MyApp.bundle.getString("Info")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -93,7 +96,7 @@ class TableScreen() : View() {
                         openInternalWindow(InfoScreen::class)
                     }
                 }
-                button("Help") {
+                button(MyApp.bundle.getString("Help")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -105,7 +108,7 @@ class TableScreen() : View() {
                         openInternalWindow(HelpScreen::class)
                     }
                 }
-                button("Clear") {
+                button(MyApp.bundle.getString("Clear")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -117,7 +120,7 @@ class TableScreen() : View() {
                         MyApp.readerOfCommands.readCommand("clear")
                     }
                 }
-                button("Save") {
+                button(MyApp.bundle.getString("Save")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -129,7 +132,7 @@ class TableScreen() : View() {
                         MyApp.readerOfCommands.readCommand("save")
                     }
                 }
-                button("Remove\ngreater key") {
+                button(MyApp.bundle.getString("Remove\ngreater_key")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -141,7 +144,7 @@ class TableScreen() : View() {
                         openInternalWindow(RemoveByGreaterKeyScreen::class)
                     }
                 }
-                button("Remove\nlower key") {
+                button(MyApp.bundle.getString("Remove\nlower_key")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -153,7 +156,7 @@ class TableScreen() : View() {
                         openInternalWindow(RemoveByLowerKeyScreen::class)
                     }
                 }
-                button("Count less\nthan group\nadmin") {
+                button(MyApp.bundle.getString("Count_less\nthan_group\nadmin")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -165,7 +168,7 @@ class TableScreen() : View() {
                         openInternalWindow(CountLessThenAdmin::class)
                     }
                 }
-                button("Remove") {
+                button(MyApp.bundle.getString("Remove")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -177,7 +180,7 @@ class TableScreen() : View() {
                         openInternalWindow(RemoveScreen::class)
                     }
                 }
-                button("Update id") {
+                button(MyApp.bundle.getString("Update_id")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -189,7 +192,7 @@ class TableScreen() : View() {
                         openInternalWindow(UpdateIdScreen::class)
                     }
                 }
-                button("Insert") {
+                button(MyApp.bundle.getString("Insert")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -201,7 +204,7 @@ class TableScreen() : View() {
                         openInternalWindow(InsertScreen::class)
                     }
                 }
-                button("Log out") {
+                button(MyApp.bundle.getString("Log_out")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK
@@ -214,7 +217,7 @@ class TableScreen() : View() {
                         replaceWith<LoginScreen>(sizeToScene = true)
                     }
                 }
-                button("Exit") {
+                button(MyApp.bundle.getString("Exit")) {
                     style {
                         textFill = Color.WHITE
                         backgroundColor += Color.BLACK

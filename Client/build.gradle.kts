@@ -1,3 +1,4 @@
+import org.intellij.markdown.html.urlEncode
 import org.jetbrains.kotlin.codegen.intrinsics.ArrayOf
 
 plugins {
@@ -26,7 +27,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 }
 
-
 kotlin {
     jvmToolchain(17)
 }
@@ -45,6 +45,9 @@ tasks.named<JavaExec>("run"){
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
+}
+tasks.withType<JavaCompile> {
+    options.encoding="UTF-8"
 }
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     archiveFileName.set("/home/roman/Client2.jar")

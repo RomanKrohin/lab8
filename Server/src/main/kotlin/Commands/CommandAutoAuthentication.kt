@@ -37,11 +37,11 @@ class CommandAutoAuthentication(
                 ).subSequence(0, 9).toString()
             if (!databaseHandler.checkUser(components[0], components[1])) {
                 answer.result =
-                    "Wrong password or login"
+                    "Wrong_password_or_login"
             }
             else{
                 if (tokenManager.getToken(token)!=null){
-                    answer.result="This account already used"
+                    answer.result="This_account_already_used"
                 }
                 else {answer.result = "Command exception 17"
             answer

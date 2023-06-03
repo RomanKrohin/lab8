@@ -13,7 +13,7 @@ class CountLessThenAdmin : View() {
     override val root= form{
         fieldset {
             alignment = Pos.TOP_CENTER
-            field("Enter name") {
+            field(MyApp.bundle.getString("Enter_name")) {
                 textfield(input).useMaxWidth
                 style {
                     setMaxWidth(280.0)
@@ -22,7 +22,7 @@ class CountLessThenAdmin : View() {
             }
         }
         hbox(50, Pos.BOTTOM_RIGHT){
-            button("Execute") {
+            button(MyApp.bundle.getString("Execute")) {
                 style {
                     setAlignment(Pos.TOP_CENTER)
                     textFill = Color.WHITE
