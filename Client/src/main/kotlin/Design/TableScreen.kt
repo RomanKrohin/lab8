@@ -94,6 +94,9 @@ class TableScreen() : View() {
                             action {
                                 tableData.asObservable().removeAll()
                                 val answer = MyApp.readerOfCommands.readCommand("show")
+                                germanC.set("")
+                                spainC.set("")
+                                indiaC.set("")
                                 answer.collectionForTable.forEach {
                                     if (it.getAdmin().getCountry() == Country.GERMANY) {
                                         germanC.set(germanC.value + "\n" + it.getName())
