@@ -4,6 +4,7 @@ import Client.Client
 import Client.Data
 import LoginScreen
 import WorkModuls.ReaderOfCommands
+import javafx.beans.property.SimpleStringProperty
 import javafx.scene.text.FontWeight
 import tornadofx.*
 import java.util.*
@@ -18,7 +19,7 @@ class MyApp : App(LoginScreen::class) {
             set(value) {
                 bundle = value
             }
-        var login=""
+        var login=SimpleStringProperty()
     }
 
 

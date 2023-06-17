@@ -18,7 +18,6 @@ import java.awt.Point
 
 class TableScreen() : View() {
     private val tableData: ObservableList<StudyGroup> = mutableListOf<StudyGroup>().asObservable()
-    private val login = SimpleStringProperty()
     private val spainC = SimpleStringProperty("")
     private val spainCW = SimpleStringProperty("")
     private val germanC = SimpleStringProperty("")
@@ -72,8 +71,9 @@ class TableScreen() : View() {
                 left {
                     maxWidth = 240.0
                     vbox {
-                        login.set(MyApp.login)
-                        label(login).style {
+                        label() {
+                            textProperty().bind(MyApp.login)
+                        }.style {
                             setAlignment(Pos.TOP_CENTER)
                             fontFamily = "Small capital"
                             fontSize = 20.px

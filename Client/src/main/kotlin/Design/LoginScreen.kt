@@ -70,7 +70,7 @@ class LoginScreen : View() {
 
                 }
                 action {
-                    MyApp.login=inputUsername.value
+                    MyApp.login.set(inputUsername.value)
                     val answer =
                         readerOfCommands.readCommand("auto-authentication ${inputUsername.value} ${inputPassword.value}").result
                     if (answer.split(" ").contains("+++")) {
